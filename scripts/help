@@ -1,0 +1,14 @@
+#!/bin/sh
+cat << EOF
+Usage: run this docker image with name of script and its arguments.
+
+example:
+
+docker run --rm --network=host voip_perf client dst_number dst_ip call_id call_count
+
+Available scripts:
+------------------
+client dst_number dst_ip call_id call_count     - dial <sip:dst_number@dst_ip> with call_id, call_cound times
+client_tls dst_number dst_ip call_id call_count - dial over TLS (tls/certificate.pem, tls/key.pem, tls/ca_list.pem)
+server local_port duration                      - run server mode on local_port with call duration
+EOF

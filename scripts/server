@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LOCAL_PORT=${1:-5070}
+DURATION=${2:100}
+
+voip_perf   --local-port=${LOCAL_PORT}\
+            --trying \
+            --ringing \
+            --thread-count=1 \
+            --duration=${DURATION}

@@ -1,0 +1,21 @@
+{
+	"server" : [
+		{
+			"response" : [
+				{ "code" : 200,
+				  "reason" : "OK",
+				  "probability" : 1.0
+				}
+			]
+		}
+	],
+	"client" : [
+		{
+			"extra-headers" : [
+				{ "Foo" : "Bar",
+				  "Bar" : "Foo"
+				}
+			]
+		}
+	]
+}

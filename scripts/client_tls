@@ -1,0 +1,34 @@
+#!/bin/bash
+
+SIP_USERNAME=$1
+SIP_DOMAIN=$2
+PORT=${3:-5061}
+CALLERID=${4:-1??????????}
+#PROXY=${4:-kamailio}
+CCOUNT=${5:-1}
+
+if [ "${SIP_USERNAME}" == "" ]; then
+  echo "Missing SIP_USERNAME. Exit"
+  exit 1
+fi
+
+if [ "${SIP_DOMAIN}" == "" ]; then
+  echo "Missing SIP_DOMAIN. Exit"
+  exit 1
+fi
+
+voip_perf "sip:${SIP_USERNAME}@${SIP_DOMAIN}:${PORT};transport=tls" \
+            --local-port=5050 \
+            --method="INVITE" \
+            --caller-id="${CALLERID}" \
+            --interval=1 \
+            --count=${CCOUNT} \
+            --call-per-second=10 \
+	          --window=25 \
+            --thread-count=1 \
+            --use-tls \
+            --timeout 7200 \
+            --tls-cert="tls/certificate.pem" \
+            --tls-key="tls/key.pem" \
+            --tls-calist="tls/ca_list.pem" \
+            --verbose 
