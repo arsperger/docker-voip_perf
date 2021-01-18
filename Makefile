@@ -29,12 +29,12 @@ build:
 # Usage:
 #       make test
 test: build
-	@docker-compose -f docker-compose.test.yml up 
+	@docker-compose -f docker-compose.test.yml up
 
 
 #
 # TODO: Fix Release image tags
-# 
+#
 # 1. build the image
 #
 # Usage:

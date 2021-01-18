@@ -8,7 +8,7 @@ docker run --rm --network=host voip_perf client dst_number dst_ip call_id call_c
 
 Available scripts:
 ------------------
-client dst_number dst_ip call_id call_count     - dial <sip:dst_number@dst_ip> with call_id, call_cound times
-client_tls dst_number dst_ip call_id call_count - dial over TLS (tls/certificate.pem, tls/key.pem, tls/ca_list.pem)
-server local_port duration                      - run server mode on local_port with call duration
+client          - dial <sip:destination_number@domain>, args: dst_number, dst_domain, call_count, CPS
+client_tls      - dial over TLS (tls/certificate.pem, tls/key.pem, tls/ca_list.pem)
+server          - run server mode on local_port with call duration
 EOF

@@ -3,9 +3,8 @@
 SIP_USERNAME=$1
 SIP_DOMAIN=$2
 PORT=${3:-5061}
-CALLERID=${4:-1??????????}
-#PROXY=${4:-kamailio}
-CCOUNT=${5:-1}
+CCOUNT=${4:-1}
+CPS=${5:-1}
 
 if [ "${SIP_USERNAME}" == "" ]; then
   echo "Missing SIP_USERNAME. Exit"
@@ -20,10 +19,10 @@ fi
 voip_perf "sip:${SIP_USERNAME}@${SIP_DOMAIN}:${PORT};transport=tls" \
             --local-port=5050 \
             --method="INVITE" \
-            --caller-id="${CALLERID}" \
+            --caller-id="1??????????" \
             --interval=1 \
             --count=${CCOUNT} \
-            --call-per-second=10 \
+            --call-per-second=${CPS} \
 	          --window=25 \
             --thread-count=1 \
             --use-tls \
@@ -31,4 +30,4 @@ voip_perf "sip:${SIP_USERNAME}@${SIP_DOMAIN}:${PORT};transport=tls" \
             --tls-cert="tls/certificate.pem" \
             --tls-key="tls/key.pem" \
             --tls-calist="tls/ca_list.pem" \
-            --verbose 
+            --verbose
